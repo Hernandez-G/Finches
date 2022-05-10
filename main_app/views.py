@@ -1,28 +1,20 @@
 from django.shortcuts import render
+from .models import Finch
 
 # Create your views here.
 
-class Finch: 
-    def __init__(self, name, breed, description, age):
-        self.name = name
-        self.breed = breed
-        self.description = description
-        self.age = age
-
-finches = [
-  Finch('Smelly', 'flabby', 'foul little demon', 13),
-  Finch('Sencha', 'yellow mix', 'diluted tortoise shell', 10),
-  Finch('Sugar', 'mixed', '3 legged finch', 14)
-]
-
-from django.http import HttpResponse
-
 def home(request):
-    return HttpResponse('<h1>Finche Page</h1>')
+    return render(request, 'home.html')
+
 def about(request):
     return render(request, 'about.html')
 
 def finches_index(request):
+  finches = Finch.objects.all()
   return render(request, 'finches/index.html', { 'finches': finches })
 
-# Note that parens are optional if not inheriting from another class
+def finches_detail(request, finch_id):
+  finch = Finch.objects.get(id=finch_id)
+  return render(request, 'finches/detail.html', {
+    'finch': finch
+  })

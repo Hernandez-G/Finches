@@ -12,5 +12,21 @@ body {
     background-color: rgb(15, 128, 128);
   }
   div.nav-wrapper {
-    background-color: rgb(15, 128, 128);
+    background-color: rgb(176, 211, 211);
   }
+  div.nav-wrapper hover {
+      background-color:rgb(176, 211, 211);
+
+  }
+
+nav .brand-logo.left {
+    padding: 0;
+    font-family: monospace;
+    text-decoration: none;
+    transform: none;
+}
+
+
+a{
+    text-decoration: none;
+}
